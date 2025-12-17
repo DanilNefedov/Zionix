@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Roboto } from "next/font/google";
+import ThemeRegistry from "./theme/ThemeRegistry";
+import './global.css'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+
+const geistRoboto = Roboto({
+  variable: "--font-geist-roboto",
   subsets: ["latin"],
+  weight: ['300', '400', '500'],
+  style: ['normal',],
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,8 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={`${geistRoboto.variable}`}>
+        <ThemeRegistry>
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );
